@@ -9,14 +9,14 @@ on:
     paths:
       - "apps/portals/**"
       - "!apps/portals/src/configurations/**"
-      - "apps/portals/src/configurations/adknowldgeportal/**"
+      - "apps/portals/src/configurations/adknowledgeportal/**"
       - "packages/synapse-react-client/**"
 
 jobs:
   build-and-deploy:
     name: build-and-deploy
     # limit to this repository
-    if: github.repository == 'Sage-Bionetworks/synapse-web-monorepo'
+    if: github.repository == 'xschildw/synapse-web-monorepo-test'
     runs-on: ubuntu-latest
     # Allow OIDC Integration (so we can assume the AWS role to deploy)
     permissions:
@@ -27,8 +27,7 @@ jobs:
         uses: actions/checkout@v3.0.0
       - name: setup
         uses: ./.github/actions/pnpm-setup-action
-      -name: build
-#        if: github.ref == 'refs/heads/main'
+      - name: build
         run: |
           echo cd apps/portals
           echo chmod +x ./build.sh
@@ -44,13 +43,11 @@ jobs:
       - name: setup-outputbucket-staging
         if: github.ref == 'refs/heads/releases/portals/staging'
         run: |
-#          echo cd apps/portals
           echo chmod +x ./run.sh
           echo bash -c ./run.sh push-staging adknowledgeportal
       # if in production branch
       - name: setup-outputbucket-prod
         if: github.ref == 'refs/heads/releases/portals/production'
         run: |
-#          echo cd apps/portals
           echo chmod +x ./run.sh
           echo bash -c ./run.sh WARNING-push-production adknowledgeportal
