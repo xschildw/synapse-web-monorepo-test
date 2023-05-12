@@ -32,3 +32,15 @@ jobs:
           cd apps/portals
           chmod +x ./build.sh
           ./build.sh adknowledgeportal
+      - name: setup-outputbucket-staging
+        if: github.ref == 'refs/heads/releases/portals/staging'
+        run: |
+          ls -l
+          echo chmod +x ./deploy.sh
+          echo bash -c ./deploy.sh push-staging adknowledgeportal
+      - name: setup-outputbucket-prod
+        if: github.ref == 'refs/heads/releases/portals/production'
+        run: |
+          ls -l
+          echo chmod +x ./deploy.sh
+          echo bash -c ./deploy.sh WARNING-push-production adknowledgeportal
