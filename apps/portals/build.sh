@@ -22,11 +22,6 @@ fi
 # copy over the directory
 cp -r $PORTAL_CONFIGURATION $PORTAL_APP_TEMPLATE
 
-# replace variable values in index.html
-chmod +x ./replaceIndexHtmlStaticValues.sh 
-# source lets the child process run in the current shell instead of creating its own
-source ./replaceIndexHtmlStaticValues.sh $1
-
 # sync current with staging
 pnpm i && pnpm nx run portals:build
 node sitemap/generate-sitemap.js $1
