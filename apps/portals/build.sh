@@ -24,6 +24,6 @@ cp -r $PORTAL_CONFIGURATION $PORTAL_APP_TEMPLATE
 
 # sync current with staging
 pnpm i && pnpm nx run portals:build
-node sitemap/generate-sitemap.js $1
+node sitemap/generate-sitemap.cjs $1
 echo 'Success - finished!'
 exit 0
