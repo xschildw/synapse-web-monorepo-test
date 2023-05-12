@@ -30,6 +30,5 @@ jobs:
       - name: build
         run: |
           cd apps/portals
-          ls
-          echo chmod +x ./build.sh
-          echo ./build.sh adknowledgeportal
+          chmod +x ./build.sh
+          ./build.sh adknowledgeportal
