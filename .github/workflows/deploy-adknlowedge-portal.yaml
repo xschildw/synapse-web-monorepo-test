@@ -38,14 +38,12 @@ jobs:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::797640923903:role/sagebase-github-oidc-sage-ProviderRolesynapsewebmo-1DNSZNE6O57RM
           role-session-name: GitHubActions-${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ github.run_id }}
-          role-duration-seconds: 1200
-      # if in staging branch 
+          role-duration-seconds: 120
       - name: setup-outputbucket-staging
         if: github.ref == 'refs/heads/releases/portals/staging'
         run: |
           echo chmod +x ./run.sh
           echo bash -c ./run.sh push-staging adknowledgeportal
-      # if in production branch
       - name: setup-outputbucket-prod
         if: github.ref == 'refs/heads/releases/portals/production'
         run: |
