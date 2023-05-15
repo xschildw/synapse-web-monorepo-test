@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/synapse-react-client.svg)](https://badge.fury.io/js/synapse-react-client)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-## Synapse React Client
+## Synapse React Client - somechange
 
 This project helps you integrate your app with the Synapse API backend.
 
