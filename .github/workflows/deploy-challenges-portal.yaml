@@ -31,7 +31,7 @@ jobs:
         run: |
           cd apps/portals
           chmod +x ./build.sh
-          ./build.sh challenge
+          ./build.sh challengeportal
       - name: setup-outputbucket-staging
         if: github.ref == 'refs/heads/releases/portals/staging'
         run: |
