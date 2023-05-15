@@ -1,4 +1,4 @@
-name: "Deploy AD Knowledge Portal"
+name: "Deploy Challenges Portal"
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
     paths:
       - "apps/portals/**"
       - "!apps/portals/src/configurations/**"
-      - "apps/portals/src/configurations/adknowledgeportal/**"
+      - "apps/portals/src/configurations/challengeportal/**"
       - "packages/synapse-react-client/**"
 
 jobs:
@@ -31,16 +31,16 @@ jobs:
         run: |
           cd apps/portals
           chmod +x ./build.sh
-          ./build.sh adknowledgeportal
+          ./build.sh challenge
       - name: setup-outputbucket-staging
         if: github.ref == 'refs/heads/releases/portals/staging'
         run: |
           cd apps/portals
           echo chmod +x ./deploy.sh
-          echo bash -c ./deploy.sh push-staging adknowledgeportal
+          echo bash -c ./deploy.sh push-staging challengeportal
       - name: setup-outputbucket-prod
         if: github.ref == 'refs/heads/releases/portals/production'
         run: |
           cd apps/portals
           echo chmod +x ./deploy.sh
-          echo bash -c ./deploy.sh WARNING-push-production adknowledgeportal
+          echo bash -c ./deploy.sh WARNING-push-production challengeportal
