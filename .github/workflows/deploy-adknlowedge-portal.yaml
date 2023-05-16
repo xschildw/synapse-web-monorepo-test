@@ -13,34 +13,10 @@ on:
       - "packages/synapse-react-client/**"
 
 jobs:
-  build-and-deploy:
-    name: build-and-deploy
-    # limit to this repository
-    if: github.repository == 'xschildw/synapse-web-monorepo-test'
-    runs-on: ubuntu-latest
-    # Allow OIDC Integration (so we can assume the AWS role to deploy)
+  deploy:
     permissions:
       id-token: write
       contents: read
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3.0.0
-      - name: setup
-        uses: ./.github/actions/pnpm-setup-action
-      - name: build
-        run: |
-          cd apps/portals
-          chmod +x ./build.sh
-          ./build.sh adknowledgeportal
-      - name: setup-outputbucket-staging
-        if: github.ref == 'refs/heads/releases/portals/staging'
-        run: |
-          ls -l
-          echo chmod +x ./deploy.sh
-          echo bash -c ./deploy.sh push-staging adknowledgeportal
-      - name: setup-outputbucket-prod
-        if: github.ref == 'refs/heads/releases/portals/production'
-        run: |
-          ls -l
-          echo chmod +x ./deploy.sh
-          echo bash -c ./deploy.sh WARNING-push-production adknowledgeportal
+    uses: ./.github/workflows/build-and-deploy.yaml
+    with:
+      portal-name: adknowledgeportal
