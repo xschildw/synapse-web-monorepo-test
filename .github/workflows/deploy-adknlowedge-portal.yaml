@@ -14,6 +14,6 @@ on:
 
 jobs:
   deploy:
-    uses: .github/workflows/build-and-deploy.yaml
+    uses: ./.github/workflows/build-and-deploy.yaml
     with:
       portal-name: adknowledgeportal
