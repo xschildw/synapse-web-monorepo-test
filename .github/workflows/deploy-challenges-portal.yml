@@ -16,7 +16,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    uses: ./.github/workflows/build-and-deploy.yaml
+    uses: ./.github/workflows/build-and-deploy-staging.yaml
     with:
       portal-name: challengeportal
       

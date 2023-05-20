@@ -16,6 +16,6 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    uses: ./.github/workflows/build-and-deploy.yaml
+    uses: ./.github/workflows/build-and-deploy-staging.yml
     with:
       portal-name: adknowledgeportal
